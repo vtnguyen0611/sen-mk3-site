@@ -28,7 +28,29 @@
     .lang-switch{display:flex; gap:8px; align-items:center; margin-left:12px}
     .lang-switch button{background:transparent; border:1px solid rgba(255,255,255,0.1); color:var(--muted); padding:6px 10px; border-radius:10px; font-weight:700; cursor:pointer}
     .lang-switch button.active{background:var(--accent); color:#071021; border-color:transparent}
-  </style>
+  
+.footer-wrapper {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.footer-contact {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 600px) {
+  .footer-contact {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="container">
@@ -150,7 +172,7 @@
         ph_email: 'Email',
         ph_note: 'Ghi chú (tùy chọn)',
         btn_send: 'Gửi yêu cầu',
-        footer_left: '© SEN Audio Labs',
+        footer_left: '© SEN Audio Labs • Tối ưu cho âm thanh',
         footer_email_label: 'Email',
         footer_hotline_label: 'Hotline'
       },
@@ -189,7 +211,7 @@
         ph_email: 'Email',
         ph_note: 'Notes (optional)',
         btn_send: 'Send request',
-        footer_left: '© SEN Audio Labs',
+        footer_left: '© SEN Audio Labs • Engineered for sound',
         footer_email_label: 'Email',
         footer_hotline_label: 'Hotline'
       }
