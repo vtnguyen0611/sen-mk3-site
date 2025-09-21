@@ -3,62 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SEN Audio — DAC & Ampli Tích Hợp</title>
+  <title>SEN Audio — SEN mk3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#f6c34a; --muted:#9aa4b2; --glass: rgba(255,255,255,0.04);
-      --radius:14px; --maxw:1200px;
-    }
-    *{box-sizing:border-box}
+    :root{--accent:#f6c34a; --muted:#9aa4b2}
     body{font-family:Inter,system-ui,Arial; margin:0; background:linear-gradient(180deg,#071021 0%, #081022 60%); color:#e6eef6; -webkit-font-smoothing:antialiased}
-    .container{max-width:var(--maxw); margin:0 auto; padding:28px}
-
-    /* Header */
+    .container{max-width:900px; margin:0 auto; padding:28px}
     header{display:flex; align-items:center; justify-content:space-between; gap:18px}
     .brand{display:flex; align-items:center; gap:12px}
     .logo{width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),#d98f1f); display:flex; align-items:center; justify-content:center; font-weight:800; color:#071021}
-    nav{display:flex; gap:16px; align-items:center}
-    nav a{color:var(--muted); text-decoration:none; font-weight:600}
-    .cta{background:var(--accent); color:#071021; padding:10px 16px; border-radius:12px; font-weight:700}
-
-    /* Hero */
-    .hero{display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; margin-top:36px}
-    .hero h1{font-size: clamp(28px,4vw,44px); margin:0 0 12px}
+    nav a{color:var(--muted); text-decoration:none; font-weight:600; margin-left:12px}
+    .cta{background:var(--accent); color:#071021; padding:10px 16px; border-radius:12px; font-weight:700; text-decoration:none}
+    .hero{margin-top:36px; display:flex; flex-direction:column; align-items:flex-start; gap:18px}
+    .hero h1{font-size: clamp(28px,4vw,44px); margin:0}
     .hero p{color:var(--muted); margin:0 0 18px}
-    .hero .hero-actions{display:flex; gap:12px}
-
-    .product-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:var(--radius); padding:18px; box-shadow: 0 6px 20px rgba(2,6,23,0.6)}
-
-    /* Products grid */
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px}
-    .card-media{height:160px; border-radius:10px; background-size:cover; background-position:center; margin-bottom:12px}
+    .product-card{background:rgba(255,255,255,0.03); border-radius:14px; padding:18px; box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .product-images{display:flex; flex-direction:column; gap:14px; margin-bottom:16px}
+    .product-images img{width:100%; border-radius:10px}
     .specs{color:var(--muted); font-size:14px}
     .price{margin-top:10px; font-weight:800; font-size:18px}
-
-    /* Features */
-    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px}
-    .feature{background:var(--glass); padding:16px; border-radius:12px}
-
-    /* Footer */
     footer{margin-top:40px; color:var(--muted); font-size:14px; padding:18px 0; border-top:1px solid rgba(255,255,255,0.03)}
-
-    /* Responsive */
-    @media (max-width:1000px){.hero{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){header{flex-direction:column; align-items:flex-start} .hero{grid-template-columns:1fr; gap:18px} .brand{gap:8px} nav{display:none} .grid{grid-template-columns:1fr} .features{grid-template-columns:1fr}}
-
-    /* Modal */
-    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:60}
-    .modal.show{display:flex}
-    .modal-backdrop{position:absolute; inset:0; background:rgba(2,6,23,0.7)}
-    .modal-panel{position:relative; max-width:720px; width:94%; background:linear-gradient(180deg,#071226, #081a2a); border-radius:12px; padding:20px; box-shadow:0 20px 50px rgba(2,6,23,0.7)}
-    .close-btn{position:absolute; right:12px; top:12px; background:transparent; border:0; color:var(--muted); font-size:18px}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .pill{background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; font-weight:700}
+    .lang-switch{display:flex; gap:8px; align-items:center; margin-left:12px}
+    .lang-switch button{background:transparent; border:1px solid rgba(255,255,255,0.1); color:var(--muted); padding:6px 10px; border-radius:10px; font-weight:700; cursor:pointer}
+    .lang-switch button.active{background:var(--accent); color:#071021; border-color:transparent}
   </style>
 </head>
 <body>
@@ -67,228 +36,189 @@
       <div class="brand">
         <div class="logo">SEN</div>
         <div>
-          <div style="font-weight:800">SEN Audio Labs</div>
-          <div class="muted" style="font-size:13px">Sống động · Tinh tế · Đa năng</div>
+          <div style="font-weight:800" data-i18n="brand_name">SEN Audio Labs</div>
+          <div class="muted" style="font-size:13px" data-i18n="brand_tagline">Engineered for sound</div>
         </div>
       </div>
       <nav>
-        <a href="#products">Sản phẩm</a>
-        <a href="#features">Tính năng</a>
-        <a href="#contact">Liên hệ</a>
-        <a class="cta" href="#contact">Mua ngay</a>
+        <a href="#product" data-i18n="nav_product">SEN mk3</a>
+        <a class="cta" href="#contact" data-i18n="nav_buy">Mua ngay</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button id="btn-vi" data-lang="vi" class="active">VI</button>
+          <button id="btn-en" data-lang="en">EN</button>
+        </div>
       </nav>
     </header>
 
     <section class="hero">
-      <div>
-        <h1>DAC & Ampli tích hợp — Giải pháp nghe nhạc Hi‑Fi cho nhà bạn</h1>
-        <p>Chọn lọc bộ giải mã (DAC) và ampli tích hợp tối ưu cho từng nhu cầu — từ phòng nghe nhỏ đến hệ thống hi-end. Thiết kế tinh tế, âm thanh tự nhiên, động lực mạnh mẽ.</p>
-        <div class="hero-actions">
-          <a class="cta" href="#products">Xem sản phẩm</a>
-          <button onclick="openModal('compare')" style="background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:12px;color:var(--muted);font-weight:700">So sánh nhanh</button>
-        </div>
-
-        <div style="margin-top:20px; display:flex; gap:12px; align-items:center">
-          <div class="pill">24‑bit / 96kHz</div>
-          <div class="pill">Balanced XLR</div>
-          <div class="pill">Gain switch</div>
-        </div>
-      </div>
-
-      <div class="product-card" style="backdrop-filter: blur(6px);">
-        <div style="display:flex; gap:12px; align-items:center">
-          <div style="flex:1">
-            <div style="font-size:13px; color:var(--muted)">Featured</div>
-            <div style="font-weight:800; font-size:20px">SEN DAC‑A3</div>
-            <div class="muted" style="margin-top:8px">Chip ES9038Q2M, hỗ trợ PCM & DSD, ngõ ra balanced</div>
-            <div class="price">$1,299</div>
-            <div style="margin-top:12px; display:flex; gap:8px">
-              <button onclick="openModal('dacA3')" style="padding:10px 12px;border-radius:10px;border:0;background:var(--accent);color:#071021;font-weight:700">Chi tiết</button>
-              <a href="#contact" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);text-decoration:none;color:var(--muted);font-weight:700">Đặt hàng</a>
-            </div>
-          </div>
-          <div style="width:140px; height:110px; border-radius:10px; background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s='); background-size:cover; background-position:center"></div>
-        </div>
-      </div>
+      <h1 data-i18n="hero_title">SEN mk3</h1>
+      <p data-i18n="hero_sub">Ampli tích hợp • 120W/kênh @8Ω • Class‑AB hybrid</p>
+      <a class="cta" href="#contact" data-i18n="hero_cta">Đặt hàng</a>
     </section>
 
-    <section id="products">
-      <h2 style="margin-top:34px">Sản phẩm nổi bật</h2>
-      <div class="grid">
-        <!-- Card 1 -->
-        <article class="product-card">
-          <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop&s=')"></div>
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <div>
-              <div style="font-weight:800">SEN DAC‑A3</div>
-              <div class="specs">ES9038Q2M · PCM/DSD · XLR / RCA</div>
-            </div>
-            <div style="text-align:right">
-              <div class="price">$1,299</div>
-              <div style="margin-top:8px"><button onclick="openModal('dacA3')" style="padding:8px 10px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Chi tiết</button></div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="product-card">
-          <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1518444021639-2ec8f6df0f31?q=80&w=1200&auto=format&fit=crop&s=')"></div>
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <div>
-              <div style="font-weight:800">SEN AMP‑M5 (Integrated)</div>
-              <div class="specs">120W/ch · Class‑AB hybrid · Pre out</div>
-            </div>
-            <div style="text-align:right">
-              <div class="price">$1,899</div>
-              <div style="margin-top:8px"><button onclick="openModal('ampM5')" style="padding:8px 10px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Chi tiết</button></div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="product-card">
-          <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1511376777868-611b54f68947?q=80&w=1200&auto=format&fit=crop&s=')"></div>
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <div>
-              <div style="font-weight:800">SEN Stream‑X</div>
-              <div class="specs">Network player · Roon Ready · Tidal/Qobuz</div>
-            </div>
-            <div style="text-align:right">
-              <div class="price">$699</div>
-              <div style="margin-top:8px"><button onclick="openModal('streamX')" style="padding:8px 10px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Chi tiết</button></div>
-            </div>
-          </div>
-        </article>
-      </div>
+    <section id="product" style="margin-top:34px">
+      <article class="product-card">
+        <div class="product-images">
+          <img src="sen3_front.jpg" alt="SEN mk3 front view">
+          <img src="sen3_back.jpg" alt="SEN mk3 back view">
+        </div>
+        <div>
+          <div style="font-weight:800; font-size:20px" data-i18n="prod_title">SEN mk3</div>
+          <div class="specs" data-i18n="prod_specs">120W/ch · Class‑AB hybrid · Pre out</div>
+          <div class="price" data-i18n="prod_price">$1,899</div>
+        </div>
+        <div style="margin-top:20px">
+          <h3 data-i18n="intro_title">Giới thiệu</h3>
+          <p data-i18n="intro_p1">SEN3 chỉ gồm hai tầng mạch chính: DAC và khuếch đại công suất... Đây chính là điểm độc đáo và khác biệt của SEN3.</p>
+          <p data-i18n="intro_p2">Với thiết kế này, SEN3 mang đến âm thanh có độ động tuyệt vời... phù hợp để thưởng thức nhiều thể loại nhạc khác nhau.</p>
+        </div>
+        <div style="margin-top:20px">
+          <h3 data-i18n="specs_title">Thông số kỹ thuật</h3>
+          <ul class="muted">
+            <li data-i18n="spec1">Công suất (Output Power): 30W/8ohm, 60W/4ohm.</li>
+            <li data-i18n="spec2">Đáp ứng tần số (Frequency response): DC - 50kHz (-3dB).</li>
+            <li data-i18n="spec3">Méo hài (THD+N): < 1%.</li>
+            <li data-i18n="spec4">Tỉ số tín hiệu / tạp âm (SNR): >70dB (non-weighted).</li>
+            <li data-i18n="spec5">Damping factor: 30 (tại 8ohm).</li>
+            <li data-i18n="spec6">Điện áp nguồn: 220VAC (110VAC chọn bên trong máy).</li>
+            <li data-i18n="spec7">Công suất tiêu thụ: max 140W (tại 8ohm), 4W khi chờ (standby)...</li>
+            <li data-i18n="spec8">Có bảo vệ quá dòng, bảo vệ chống điện áp DC ra loa.</li>
+            <li data-i18n="spec9">Kích thước: 430x370x130mm.</li>
+            <li data-i18n="spec10">Trọng lượng: 12kg.</li>
+            <li data-i18n="spec11">Ngõ vào: SPDIF... USB...</li>
+            <li data-i18n="spec12">Kèm điều khiển từ xa.</li>
+			<li data-i18n="spec13">Thời gian bảo hành: 1 năm</li>
+          </ul>
+        </div>
+      </article>
     </section>
 
-    <section id="features">
-      <h2 style="margin-top:34px">Tính năng nổi bật</h2>
-      <div class="features">
-        <div class="feature">
-          <div style="font-weight:800">Giải mã chất lượng cao</div>
-          <div class="muted" style="margin-top:8px">Hỗ trợ PCM tới 32‑bit/384kHz và native DSD.</div>
-        </div>
-        <div class="feature">
-          <div style="font-weight:800">Kết nối đa dạng</div>
-          <div class="muted" style="margin-top:8px">Balanced XLR, RCA, USB, Optical, Coaxial và Ethernet cho streaming.</div>
-        </div>
-        <div class="feature">
-          <div style="font-weight:800">Thiết kế tối giản</div>
-          <div class="muted" style="margin-top:8px">Vỏ hợp kim, nút cơ/remote, và mặt trước tối giản phù hợp phòng nghe hiện đại.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2 style="margin-top:34px">Liên hệ / Đặt hàng</h2>
-      <div class="product-card" style="display:flex; flex-direction:column; gap:12px">
-        <div class="muted">Bạn muốn tư vấn chọn sản phẩm hoặc nhận báo giá? Điền thông tin bên dưới.</div>
-        
-<form action="https://formspree.io/f/xandrvbg" method="POST" style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
-  <input name="name" placeholder="Họ và tên" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-  <input name="phone" placeholder="Số điện thoại" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-  <input name="email" placeholder="Email" type="email" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-  <select name="product" style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit">
-    <option>Chọn sản phẩm quan tâm</option>
-    <option>SEN DAC‑A3</option>
-    <option>SEN AMP‑M5</option>
-    <option>SEN Stream‑X</option>
-  </select>
-  <textarea name="message" placeholder="Ghi chú (tùy chọn)" style="grid-column:1 / -1; padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit"></textarea>
-  <button type="submit" style="grid-column:1 / -1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:#071021;font-weight:800">Gửi yêu cầu</button>
-</form>
-
-      </div>
+    <section id="contact" style="margin-top:34px">
+      <h2 data-i18n="contact_title">Liên hệ / Đặt hàng</h2>
+      <p class="muted" data-i18n="contact_desc">Bạn cần tư vấn sản phẩm hoặc nhận báo giá? Điền form bên dưới.</p>
+      <form action="https://formspree.io/f/xandrvbg" method="POST" style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
+        <input name="name" data-i18n-placeholder="ph_name" placeholder="Họ và tên" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+        <input name="phone" data-i18n-placeholder="ph_phone" placeholder="Số điện thoại" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+        <input name="email" data-i18n-placeholder="ph_email" placeholder="Email" type="email" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+        <textarea name="message" data-i18n-placeholder="ph_note" placeholder="Ghi chú (tùy chọn)" style="grid-column:1 / -1; padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit"></textarea>
+        <button type="submit" style="grid-column:1 / -1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:#071021;font-weight:800" data-i18n="btn_send">Gửi yêu cầu</button>
+      </form>
     </section>
 
     <footer>
       <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
-        <div>© SEN Audio Labs • Thiết kế dành cho âm thanh</div>
-        <div class="muted">Email: sales@sen-audio.example • Hotline: +84 9xx xxx xxx</div>
+        <div data-i18n="footer_left">© SEN Audio Labs • Thiết kế dành cho âm thanh</div>
+        <div class="muted"><span data-i18n="footer_email_label">Email</span>: vtnguyen0611@gmail.com • <span data-i18n="footer_hotline_label">Hotline</span>: +84 937112525</div>
       </div>
     </footer>
   </div>
 
-  <!-- Modal panels -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-backdrop" onclick="closeModal()"></div>
-    <div class="modal-panel">
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <div id="modal-content">
-        <!-- injected -->
-      </div>
-    </div>
-  </div>
-
   <script>
-    const MODALS = {
-      'dacA3': `
-        <h3 style="margin:0 0 8px">SEN DAC‑A3</h3>
-        <p class="muted">Chip ES9038Q2M • Native DSD • Balanced outputs</p>
-        <ul class="muted" style="margin-top:12px">
-          <li>Sampling: PCM up to 32‑bit/384kHz</li>
-          <li>DSD: DSD64/128 native</li>
-          <li>Outputs: XLR balanced, RCA unbalanced</li>
-          <li>Inputs: USB‑C, Coaxial, Optical</li>
-        </ul>
-        <div style="margin-top:12px; display:flex; gap:8px">
-          <button onclick="closeModal(); alert('Thêm vào giỏ — demo');" style="padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Mua</button>
-          <button onclick="closeModal()" style="padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)">Đóng</button>
-        </div>
-      `,
-      'ampM5': `
-        <h3 style="margin:0 0 8px">SEN AMP‑M5</h3>
-        <p class="muted">Integrated amplifier • 120W/ch @8Ω • Class‑AB hybrid</p>
-        <ul class="muted" style="margin-top:12px">
-          <li>120W x 2 (8Ω) • 200W x 2 (4Ω)</li>
-          <li>Pre out / Record out / Phono MM (option)</li>
-          <li>Remote + Front panel controls</li>
-        </ul>
-        <div style="margin-top:12px; display:flex; gap:8px">
-          <button onclick="closeModal(); alert('Thêm vào giỏ — demo');" style="padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Mua</button>
-          <button onclick="closeModal()" style="padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)">Đóng</button>
-        </div>
-      `,
-      'streamX': `
-        <h3 style="margin:0 0 8px">SEN Stream‑X</h3>
-        <p class="muted">Network streamer • Roon Ready • Tidal / Qobuz</p>
-        <ul class="muted" style="margin-top:12px">
-          <li>Ethernet + Wi‑Fi • Gapless playback</li>
-          <li>USB audio output to DAC • DLNA / AirPlay</li>
-        </ul>
-        <div style="margin-top:12px; display:flex; gap:8px">
-          <button onclick="closeModal(); alert('Thêm vào giỏ — demo');" style="padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Mua</button>
-          <button onclick="closeModal()" style="padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)">Đóng</button>
-        </div>
-      `,
-      'compare': `
-        <h3 style="margin:0 0 8px">So sánh nhanh</h3>
-        <table style="width:100%; border-collapse:collapse; margin-top:8px; color:var(--muted)">
-          <tr><th align="left">Model</th><th align="left">Type</th><th align="left">Key</th></tr>
-          <tr><td>SEN DAC‑A3</td><td>DAC</td><td>ES9038Q2M, DSD native</td></tr>
-          <tr><td>SEN AMP‑M5</td><td>Integrated Amp</td><td>120W/ch, Class‑AB hybrid</td></tr>
-          <tr><td>SEN Stream‑X</td><td>Streamer</td><td>Roon Ready, Tidal/Qobuz</td></tr>
-        </table>
-        <div style="margin-top:12px"><button onclick="closeModal()" style="padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#071021;font-weight:700">Đóng</button></div>
-      `
+    const I18N = {
+      vi: {
+        brand_name: 'SEN Audio Labs',
+        brand_tagline: 'Tối ưu cho âm thanh',
+        nav_product: 'SEN mk3',
+        nav_buy: 'Mua ngay',
+        hero_title: 'SEN mk3',
+        hero_sub: 'Ampli tích hợp • Lái bằng dòng điện • Nối tầng trực tiếp',
+        hero_cta: 'Đặt hàng',
+        prod_title: 'SEN mk3',
+        prod_specs: 'Ampli tích hợp • Lái bằng dòng điện • Nối tầng trực tiếp',
+        prod_price: 'Price: $1,299',
+        intro_title: 'Giới thiệu',
+        intro_p1: 'SEN3 chỉ gồm hai tầng mạch chính: DAC và khuếch đại công suất. Đặc biệt, mạch khuếch đại công suất không chỉ đảm nhận vai trò khuếch đại cho loa mà còn là mạch chuyển đổi dòng điện thành điện áp (I/V converter) cho DAC. Nên có thể coi SEN3 là thiết bị DAC công suất lớn (high power Digital-Analog Converter). Đây chính là điểm độc đáo và khác biệt của SEN3.',
+        intro_p2: 'Với thiết kế này, SEN3 mang đến âm thanh có độ động tuyệt vời, không gian âm thanh rộng mở và sâu. Âm thanh trở nên dày và chi tiết, tái tạo trung thực các dãy tần số, từ đó phù hợp để thưởng thức nhiều thể loại nhạc khác nhau, từ Pre75 đến Jazz hay Rock.',
+        specs_title: 'Thông số kỹ thuật',
+        spec1: 'Công suất (Output Power): 30W/8ohm, 60W/4ohm.',
+        spec2: 'Đáp ứng tần số (Frequency response): DC - 50kHz (-3dB).',
+        spec3: 'Méo hài (THD+N): < 1%.',
+        spec4: 'Tỉ số tín hiệu / tạp âm (SNR): >70dB (non-weighted).',
+        spec5: 'Damping factor: 30 (tại 8ohm).',
+        spec6: 'Điện áp nguồn: 220VAC (110VAC chọn bên trong máy).',
+        spec7: 'Công suất tiêu thụ: max 140W (tại 8ohm), 4W khi chờ (standby). Tự động chuyển vào trạng thái chờ sau 20 phút không có tín hiệu âm thanh.',
+        spec8: 'Có bảo vệ quá dòng, bảo vệ chống điện áp DC ra loa.',
+        spec9: 'Kích thước: 430x370x130mm.',
+        spec10: 'Trọng lượng: 12kg.',
+        spec11: 'Ngõ vào: SPDIF: 75ohm, max 24 bits/192kHz; USB: type B, max 32 bit/384kHz. Chuyển đổi DSD sang PCM bằng phần cứng.',
+        spec12: 'Kèm điều khiển từ xa.',
+		spec13: 'Thời gian bảo hành: 1 năm.',
+        contact_title: 'Liên hệ / Đặt hàng',
+        contact_desc: 'Bạn cần tư vấn sản phẩm hoặc nhận báo giá? Điền form bên dưới.',
+        ph_name: 'Họ và tên',
+        ph_phone: 'Số điện thoại',
+        ph_email: 'Email',
+        ph_note: 'Ghi chú (tùy chọn)',
+        btn_send: 'Gửi yêu cầu',
+        footer_left: '© SEN Audio Labs • Tối ưu cho âm thanh',
+        footer_email_label: 'Email',
+        footer_hotline_label: 'Hotline'
+      },
+      en: {
+        brand_name: 'SEN Audio Labs',
+        brand_tagline: 'Engineered for sound',
+        nav_product: 'SEN mk3',
+        nav_buy: 'Buy now',
+        hero_title: 'SEN mk3',
+        hero_sub: 'Integrated amplifier • Current-mode • DC-coupled',
+        hero_cta: 'Order',
+        prod_title: 'SEN mk3',
+        prod_specs: 'Integrated amplifier • Current-mode • DC-coupled',
+        prod_price: '$1,299',
+        intro_title: 'Introduction',
+        intro_p1: 'SEN3 has only two main circuit stages: DAC and power amplifier. Notably, the power amplifier stage not only drives the speakers but also serves as the current‑to‑voltage (I/V) converter for the DAC — effectively making SEN3 a high‑power Digital‑to‑Analog Converter. This is the unique and distinctive feature of SEN3.',
+        intro_p2: 'With this design, SEN3 delivers excellent dynamics, a wide and deep soundstage, and a rich yet detailed presentation across the spectrum — suitable for many genres, from Pre75 to Jazz or Rock.',
+        specs_title: 'Technical Specifications',
+        spec1: 'Output Power: 30W/8Ω, 60W/4Ω.',
+        spec2: 'Frequency response: DC – 50kHz (‑3dB).',
+        spec3: 'THD+N: < 1%.',
+        spec4: 'SNR: >70dB (non‑weighted).',
+        spec5: 'Damping factor: 30 (at 8Ω).',
+        spec6: 'Mains: 220VAC (110VAC selectable inside).',
+        spec7: 'Power consumption: max 140W (at 8Ω), 4W standby. Auto‑standby after 20 minutes with no audio signal.',
+        spec8: 'Over‑current and DC‑output speaker protection.',
+        spec9: 'Dimensions: 430 × 370 × 130 mm.',
+        spec10: 'Weight: 12 kg.',
+        spec11: 'Inputs: SPDIF 75Ω, up to 24‑bit/192kHz; USB type‑B, up to 32‑bit/384kHz. Hardware DSD‑to‑PCM conversion.',
+        spec12: 'Includes remote control.',
+		spec13: 'Warranty period: 1 year.',
+        contact_title: 'Contact / Order',
+        contact_desc: 'Need product advice or a quote? Fill in the form below.',
+        ph_name: 'Full name',
+        ph_phone: 'Phone number',
+        ph_email: 'Email',
+        ph_note: 'Notes (optional)',
+        btn_send: 'Send request',
+        footer_left: '© SEN Audio Labs • Engineered for sound',
+        footer_email_label: 'Email',
+        footer_hotline_label: 'Hotline'
+      }
     };
 
-    function openModal(key){
-      const modal = document.getElementById('modal');
-      const content = document.getElementById('modal-content');
-      content.innerHTML = MODALS[key] || '<p>Không có thông tin</p>';
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden','false');
-    }
-    function closeModal(){
-      const modal = document.getElementById('modal');
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden','true');
+    function applyI18n(lang){
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.dataset.i18n; if(I18N[lang][key]) el.textContent = I18N[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const key = el.dataset.i18nPlaceholder; if(I18N[lang][key]) el.placeholder = I18N[lang][key];
+      });
+      document.querySelectorAll('.lang-switch button').forEach(btn=>{
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
     }
 
-    // small enhancement: close modal on ESC
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+    function setLang(lang){
+      localStorage.setItem('lang', lang);
+      applyI18n(lang);
+    }
+
+    const saved = localStorage.getItem('lang');
+    const initialLang = saved || ((navigator.language || 'vi').startsWith('vi') ? 'vi' : 'en');
+    applyI18n(initialLang);
+
+    document.getElementById('btn-vi').addEventListener('click', ()=> setLang('vi'));
+    document.getElementById('btn-en').addEventListener('click', ()=> setLang('en'));
   </script>
 </body>
 </html>
