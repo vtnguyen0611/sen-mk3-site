@@ -36,7 +36,53 @@
   .sep{display:none;}
 }
 
+
+.footer-wrapper{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.footer-contact{display:flex;gap:12px;flex-wrap:wrap;}
+.footer-contact a{color:inherit;text-decoration:underline;}
+@media (max-width:600px){.footer-contact{flex-direction:column;align-items:flex-start;}}
+
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SEN Audio Labs",
+  "url": "https://senaudiolabs.io.vn/",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@senaudiolabs.io.vn",
+      "telephone": "+84-937112525",
+      "areaServed": "VN",
+      "availableLanguage": [
+        "vi",
+        "en"
+      ]
+    }
+  ]
+}
+</script>
+
+  <link rel="canonical" href="https://senaudiolabs.io.vn/">
+  <meta name="description" content="SEN mk3 — Integrated amplifier (current‑mode, DC‑coupled). Âm thanh động, sân khấu rộng, giàu chi tiết, phù hợp nhiều thể loại.">
+  <meta name="keywords" content="SEN mk3, amplifier, integrated amplifier, current-drive, current-mode, DC-coupled, Class-AB hybrid, hi-fi, hi-end">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SEN mk3 — Integrated Amplifier">
+  <meta property="og:description" content="All-in-one • Current-mode • DC-coupled. Dynamic, wide soundstage, detailed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://senaudiolabs.io.vn/">
+  <meta property="og:image" content="https://senaudiolabs.io.vn/assets/img/sen3_front.jpg">
+  <meta property="og:site_name" content="SEN Audio Labs">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEN mk3 — Integrated Amplifier">
+  <meta name="twitter:description" content="All-in-one • Current-mode • DC-coupled. Dynamic & detailed.">
+  <meta name="twitter:image" content="https://senaudiolabs.io.vn/assets/img/sen3_front.jpg">
+
 </head>
 <body>
   <div class="container">
@@ -60,20 +106,27 @@
 
     <section class="hero">
       <h1 data-i18n="hero_title">SEN mk3</h1>
-      <p data-i18n="hero_sub">Ampli tích hợp • 120W/kênh @8Ω • Class‑AB hybrid</p>
+      <p data-i18n="hero_sub">Ampli tất cả trong một • Lái bằng dòng điện • Nối tầng trực tiếp</p>
       <a class="cta" href="#contact" data-i18n="hero_cta">Đặt hàng</a>
     </section>
 
     <section id="product" style="margin-top:34px">
       <article class="product-card">
+        
         <div class="product-images">
-          <img src="./assets/img/sen3_front.jpg" alt="SEN mk3 front view">
-          <img src="./assets/img/sen3_back.jpg" alt="SEN mk3 back view">
+          <picture>
+            <source srcset="./assets/img/sen3_front.webp" type="image/webp">
+            <img src="./assets/img/sen3_front.jpg" alt="SEN mk3 integrated amplifier — front view" width="1280" height="720" loading="eager">
+          </picture>
+          <picture>
+            <source srcset="./assets/img/sen3_back.webp" type="image/webp">
+            <img src="./assets/img/sen3_back.jpg" alt="SEN mk3 integrated amplifier — back view" width="1280" height="720" loading="lazy">
+          </picture>
         </div>
-        <div>
+<div>
           <div style="font-weight:800; font-size:20px" data-i18n="prod_title">SEN mk3</div>
-          <div class="specs" data-i18n="prod_specs">120W/ch · Class‑AB hybrid · Pre out</div>
-          <div class="price" data-i18n="prod_price">$1,899</div>
+          <div class="specs" data-i18n="prod_specs">Ampli tất cả trong một • Lái bằng dòng điện • Nối tầng trực tiếp</div>
+          <div class="price" data-i18n="prod_price">$1,199</div>
         </div>
         <div style="margin-top:20px">
           <h3 data-i18n="intro_title">Giới thiệu</h3>
@@ -104,21 +157,38 @@
     <section id="contact" style="margin-top:34px">
       <h2 data-i18n="contact_title">Liên hệ / Đặt hàng</h2>
       <p class="muted" data-i18n="contact_desc">Bạn cần tư vấn sản phẩm hoặc nhận báo giá? Điền form bên dưới.</p>
-      <form action="https://formspree.io/f/xandrvbg" method="POST" style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
-        <input name="name" data-i18n-placeholder="ph_name" placeholder="Họ và tên" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-        <input name="phone" data-i18n-placeholder="ph_phone" placeholder="Số điện thoại" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-        <input name="email" data-i18n-placeholder="ph_email" placeholder="Email" type="email" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
-        <textarea name="message" data-i18n-placeholder="ph_note" placeholder="Ghi chú (tùy chọn)" style="grid-column:1 / -1; padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit"></textarea>
-        <button type="submit" style="grid-column:1 / -1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:#071021;font-weight:800" data-i18n="btn_send">Gửi yêu cầu</button>
-      </form>
+      
+<form id="contact-form" action="https://formspree.io/f/xandrvbg" method="POST" style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
+  <input name="name" data-i18n-placeholder="ph_name" placeholder="Họ và tên" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+  <input name="phone" data-i18n-placeholder="ph_phone" placeholder="Số điện thoại" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+  <input name="email" data-i18n-placeholder="ph_email" placeholder="Email" type="email" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+  <textarea name="message" data-i18n-placeholder="ph_note" placeholder="Ghi chú (tùy chọn)" style="grid-column:1 / -1; padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit"></textarea>
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_subject" value="New inquiry from senaudiolabs.io.vn">
+  <input type="hidden" name="_gotcha" value="">
+  <button type="submit" style="grid-column:1 / -1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:#071021;font-weight:800" data-i18n="btn_send">Gửi yêu cầu</button>
+</form>
+<div id="form-response" data-i18n="form_success" style="display:none;margin-top:12px;color:var(--accent);font-weight:700">Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu.</div>
+
     </section>
 
-    <footer>
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
-        <div data-i18n="footer_left">© SEN Audio Labs • Thiết kế dành cho âm thanh</div>
-        <div class="muted"><span data-i18n="footer_email_label">Email</span>: support@senaudiolabs.io.vn<span class="sep"> • </span><br class="only-mobile"><span data-i18n="footer_hotline_label">Hotline</span>: +84 937112525</div>
+    
+<footer>
+  <div class="footer-wrapper">
+    <div data-i18n="footer_left">© SEN Audio Labs • Thiết kế dành cho âm thanh</div>
+    <div class="footer-contact">
+      <div>
+        <span data-i18n="footer_email_label">Email</span>:
+        <a id="email-link" href="mailto:support@senaudiolabs.io.vn">support@senaudiolabs.io.vn</a>
       </div>
-    </footer>
+      <div>
+        <span data-i18n="footer_hotline_label">Hotline</span>:
+        <a href="tel:+84937112525">+84 937112525</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
   </div>
 
   <script>
@@ -133,7 +203,7 @@
         hero_cta: 'Đặt hàng',
         prod_title: 'SEN mk3',
         prod_specs: 'Ampli tất cả trong một • Lái bằng dòng điện • Nối tầng trực tiếp',
-        prod_price: 'Price: $1,299',
+        prod_price: 'Giá: $1,199',
         intro_title: 'Giới thiệu',
         intro_p1: 'SEN3 chỉ gồm hai tầng mạch chính: DAC và khuếch đại công suất. Đặc biệt, mạch khuếch đại công suất không chỉ đảm nhận vai trò khuếch đại cho loa mà còn là mạch chuyển đổi dòng điện thành điện áp (I/V converter) cho DAC. Nên có thể coi SEN3 là thiết bị DAC công suất lớn (high power Digital-Analog Converter). Đây chính là điểm độc đáo và khác biệt của SEN3.',
         intro_p2: 'Với thiết kế này, SEN3 mang đến âm thanh có độ động tuyệt vời, không gian âm thanh rộng mở và sâu. Âm thanh trở nên dày và chi tiết, tái tạo trung thực các dãy tần số, từ đó phù hợp để thưởng thức nhiều thể loại nhạc khác nhau, từ Pre75 đến Jazz hay Rock.',
@@ -160,8 +230,10 @@
         btn_send: 'Gửi yêu cầu',
         footer_left: '© SEN Audio Labs • Tối ưu cho âm thanh',
         footer_email_label: 'Email',
-        footer_hotline_label: 'Hotline'
-      },
+        footer_hotline_label: 'Hotline',
+        form_success: 'Cảm ơn bạn! Chúng tôi đã nhận được yêu cầu.',
+
+},
       en: {
         brand_name: 'SEN Audio Labs',
         brand_tagline: 'Engineered for sound',
@@ -172,7 +244,7 @@
         hero_cta: 'Order',
         prod_title: 'SEN mk3',
         prod_specs: 'All-in-one • Current-mode • DC-coupled Amplifier',
-        prod_price: '$1,299',
+        prod_price: 'Price: $1,199',
         intro_title: 'Introduction',
         intro_p1: 'SEN3 has only two main circuit stages: DAC and power amplifier. Notably, the power amplifier stage not only drives the speakers but also serves as the current‑to‑voltage (I/V) converter for the DAC — effectively making SEN3 a high‑power Digital‑to‑Analog Converter. This is the unique and distinctive feature of SEN3.',
         intro_p2: 'With this design, SEN3 delivers excellent dynamics, a wide and deep soundstage, and a rich yet detailed presentation across the spectrum — suitable for many genres, from Pre75 to Jazz or Rock.',
@@ -199,8 +271,9 @@
         btn_send: 'Send request',
         footer_left: '© SEN Audio Labs • Engineered for sound',
         footer_email_label: 'Email',
-        footer_hotline_label: 'Hotline'
-      }
+        footer_hotline_label: 'Hotline',
+        form_success: 'Thank you! We have received your request.',
+}
     };
 
     function applyI18n(lang){
@@ -228,5 +301,40 @@
     document.getElementById('btn-vi').addEventListener('click', ()=> setLang('vi'));
     document.getElementById('btn-en').addEventListener('click', ()=> setLang('en'));
   </script>
+
+<script>
+(function(){
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    try{
+      const r = await fetch(form.action, { method: "POST", body: data, headers: { "Accept": "application/json" } });
+      if (r.ok){
+        form.style.display = "none";
+        var msg = document.getElementById("form-response");
+        if (msg) msg.style.display = "block";
+      } else {
+        alert("Có lỗi xảy ra, vui lòng thử lại.");
+      }
+    }catch(err){
+      alert("Không thể gửi yêu cầu. Vui lòng kiểm tra kết nối.");
+    }
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var slot = document.getElementById("email-link");
+  if(!slot) return;
+  var u = "support", h = "senaudiolabs.io.vn";
+  slot.href = "mailto:" + u + "@" + h;
+  slot.textContent = u + "@" + h;
+})();
+</script>
+
 </body>
 </html>
