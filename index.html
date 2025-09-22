@@ -21,7 +21,12 @@
     .hero p{color:var(--muted); margin:0 0 18px}
     .product-card{background:rgba(255,255,255,0.03); border-radius:14px; padding:18px; box-shadow:0 6px 20px rgba(2,6,23,0.6)}
     .product-images{display:flex; flex-direction:column; gap:14px; margin-bottom:16px}
-    .product-images img{width:100%; border-radius:10px}
+    .product-images img{
+  width:100%;
+  height:auto;
+  border-radius:10px;
+  aspect-ratio:1280/719;
+}
     .specs{color:var(--muted); font-size:14px}
     .price{margin-top:10px; font-weight:800; font-size:18px}
     footer{margin-top:40px; color:var(--muted); font-size:14px; padding:18px 0; border-top:1px solid rgba(255,255,255,0.03)}
@@ -113,16 +118,18 @@
     <section id="product" style="margin-top:34px">
       <article class="product-card">
         
-        <div class="product-images">
-          <picture>
-            <source srcset="./assets/img/sen3_front.webp" type="image/webp">
-            <img src="./assets/img/sen3_front.jpg" alt="SEN mk3 integrated amplifier — front view" width="1280" height="720" loading="eager">
-          </picture>
-          <picture>
-            <source srcset="./assets/img/sen3_back.webp" type="image/webp">
-            <img src="./assets/img/sen3_back.jpg" alt="SEN mk3 integrated amplifier — back view" width="1280" height="720" loading="lazy">
-          </picture>
-        </div>
+        
+<div class="product-images">
+  <picture>
+    <source srcset="./assets/img/sen3_front.webp" type="image/webp">
+    <img src="./assets/img/sen3_front.jpg" alt="SEN mk3 integrated amplifier — front view" loading="eager">
+  </picture>
+  <picture>
+    <source srcset="./assets/img/sen3_back.webp" type="image/webp">
+    <img src="./assets/img/sen3_back.jpg" alt="SEN mk3 integrated amplifier — back view" loading="lazy">
+  </picture>
+</div>
+
 <div>
           <div style="font-weight:800; font-size:20px" data-i18n="prod_title">SEN mk3</div>
           <div class="specs" data-i18n="prod_specs">Ampli tất cả trong một • Lái bằng dòng điện • Nối tầng trực tiếp</div>
